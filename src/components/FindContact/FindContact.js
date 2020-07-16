@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const FindContact = ({ filtered, filterValue, deleteContact }) => {
   return (
@@ -22,3 +23,9 @@ const FindContact = ({ filtered, filterValue, deleteContact }) => {
 };
 
 export default FindContact;
+
+FindContact.propTypes = {
+  filtered: PropTypes.array.isRequired,
+  filterValue: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};

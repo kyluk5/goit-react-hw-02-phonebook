@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const PhoneForm = ({
   submitForm,
@@ -36,3 +37,11 @@ const PhoneForm = ({
 };
 
 export default PhoneForm;
+
+PhoneForm.propTypes = {
+  submitForm: PropTypes.func,
+  name: PropTypes.string,
+  contactName: PropTypes.func,
+  number: PropTypes.string,
+  contactNumber: PropTypes.func,
+};
