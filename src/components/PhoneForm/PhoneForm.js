@@ -39,9 +39,9 @@ const PhoneForm = ({
 export default PhoneForm;
 
 PhoneForm.propTypes = {
-  submitForm: PropTypes.func,
-  name: PropTypes.string,
-  contactName: PropTypes.func,
-  number: PropTypes.string,
-  contactNumber: PropTypes.func,
+  submitForm: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  contactName: PropTypes.func.isRequired,
+  number: PropTypes.string.isRequired,
+  contactNumber: PropTypes.func.isRequired,
 };
