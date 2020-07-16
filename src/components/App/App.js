@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import PfoneForm from "../PhoneForm/PhoneForm";
+import FindContact from "../FindContact/FindContact";
 
 class App extends Component {
   state = {
@@ -43,7 +45,7 @@ class App extends Component {
     e.preventDefault();
     const { name, number, contacts } = this.state;
     if (contacts.find((item) => item.name === this.state.name)) {
-      alert("This name alredy exist");
+      alert(`${name} alredy exist`);
       return;
     }
     const object = {
@@ -53,6 +55,9 @@ class App extends Component {
     };
     this.setState((prev) => ({
       contacts: [...prev.contacts, object],
+      filter: "",
+      name: "",
+      number: "",
     }));
   };
 
@@ -61,36 +66,18 @@ class App extends Component {
 
     return (
       <>
-        <h2>Phonebook</h2>
-        <form onSubmit={this.submitForm}>
-          <span>Name</span>
-          <br></br>
-          <input type="text" name="name" onChange={this.contactName}></input>
-          <br></br>
-          <span>Number</span>
-          <br></br>
-          <input
-            type="text"
-            name="number"
-            onChange={this.contactNumber}
-          ></input>
-          <br></br>
-          <button type="submit">Add contact</button>
-        </form>
-        <h3>Contacts</h3>
-        <span>Find contacts by name</span>
-        <br></br>
-        <input type="text" onChange={this.filterValue}></input>
-        <ul>
-          {filtered.map((item) => (
-            <li key={item.id}>
-              {item.name} : {item.number}
-              <button type="button" id={item.id} onClick={this.deleteContact}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+        <PfoneForm
+          submitForm={this.submitForm}
+          name={this.state.name}
+          contactName={this.contactName}
+          number={this.state.number}
+          contactNumber={this.contactNumber}
+        />
+        <FindContact
+          filtered={filtered}
+          filterValue={this.filterValue}
+          deleteContact={this.deleteContact}
+        />
       </>
     );
   }
